@@ -18,6 +18,7 @@ import SaveBtn from '../ui/SaveBtn.js';
 import ChatStripe from '../chatComp/ChatStripe';
 
 import {colors} from '../../constants/colors';
+import {restClient} from '../../services/axiosClient';
 
 //FIXME function to type the ansered text letter by letter to have a better user expierience - not implemented yet.
 // function typeText(e, t) {
@@ -102,21 +103,23 @@ function Chat({navigation}) {
     ]);
 
     setInput('');
+
     try {
-      const response = await fetch(
-        'https://exxpress-server-for-ai-chat-app.onrender.com',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            prompt: input,
-          }),
-        },
-      );
-      const data = await response.json();
-      const parsedData = data.bot.trim();
+      // const response = await fetch(
+      //   'https://exxpress-server-for-ai-chat-app.onrender.com',
+      //   {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({
+      //       prompt: input,
+      //     }),
+      //   },
+      // );
+      const response = await restClient.post('/', {prompt: input});
+      console.log(response.data.bot);
+      const parsedData = response.data.bot.trim();
       setResult(parsedData);
       setChat(prev => [
         ...prev,
