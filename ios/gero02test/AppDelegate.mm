@@ -2,6 +2,7 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import "RNBootSplash.h"
+#import <Firebase.h>
 
 @implementation AppDelegate
 
@@ -13,7 +14,7 @@
   self.initialProps = @{};
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
-
+  [FIRApp configure];
   [RNBootSplash initWithStoryboard:@"BootSplash" rootView:self.window.rootViewController.view];
 }
 

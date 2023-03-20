@@ -1,4 +1,4 @@
-package com.gero02test;
+package app.vercel.ai_code_g;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

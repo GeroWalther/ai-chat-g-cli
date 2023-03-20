@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.rnbootsplashexample">
+  package="app.vercel.ai_code_g">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
